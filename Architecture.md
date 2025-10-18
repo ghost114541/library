@@ -1,51 +1,51 @@
-# Application Architecture
+# Архитектура приложения
 
-This document describes the architecture of the library management system.
+В этом документе описывается архитектура системы управления библиотекой.
 
-## Overview
+## Обзор
 
-The application follows a classic client-server architecture, with a single-page application (SPA) frontend and a monolithic backend.
+Приложение построено по классической архитектуре клиент-сервер с фронтендом одностраничного приложения (SPA) и монолитным бэкендом.
 
-## Frontend (web)
+## Фронтенд (веб)
 
-The frontend is a Vue.js application built with Vite.
+Фронтенд — это приложение Vue.js, созданное с помощью Vite.
 
-*   **Framework:** Vue.js 3
-*   **Build Tool:** Vite
-*   **Routing:** Vue Router
-*   **State Management:** Pinia
-*   **UI Library:** Element Plus
-*   **HTTP Client:** Axios
+* **Фреймворк:** Vue.js 3
+* **Инструмент сборки:** Vite
+* **Маршрутизация:** Vue Router
+* **Управление состоянием:** Pinia
+* **Библиотека пользовательского интерфейса:** Element Plus
+* **HTTP-клиент:** Axios
 
-The frontend code is organized into the following main directories:
+Код фронтенда организован в следующих основных каталогах:
 
-*   `src/api`: Contains the definitions of the API endpoints for communicating with the backend.
-*   `src/assets`: Static assets like images and stylesheets.
-*   `src/components`: Reusable Vue components.
-*   `src/layout`: The main application layout.
-*   `src/router`: Vue Router configuration.
-*   `src/stores`: Pinia store modules for state management.
-*   `src/utils`: Utility functions, including the Axios configuration for HTTP requests.
-*   `src/views`: Vue components for each page of the application.
+* `src/api`: Содержит определения конечных точек API для взаимодействия с бэкендом.
+* `src/assets`: Статические ресурсы, такие как изображения и таблицы стилей.
+* `src/components`: Многоразовые компоненты Vue.
+* `src/layout`: Основной макет приложения.
+* `src/router`: Конфигурация маршрутизатора Vue.
+* `src/stores`: Модули хранилища Pinia для управления состоянием.
+* `src/utils`: Вспомогательные функции, включая конфигурацию Axios для HTTP-запросов.
+* `src/views`: Компоненты Vue для каждой страницы приложения.
 
-## Backend (admin)
+## Бэкенд (администрирование)
 
-The backend is a Java application built with Spring Boot.
+Бэкенд — это приложение Java, созданное с помощью Spring Boot.
 
-*   **Framework:** Spring Boot
-*   **Language:** Java 11
-*   **Build Tool:** Maven
-*   **Web:** Spring Web (for REST APIs)
-*   **Data Access:** Spring Data JPA
-*   **Database:** MySQL
-*   **Security:** Spring Security with JSON Web Tokens (JWT)
+* **Фреймворк:** Spring Boot
+* **Язык:** Java 11
+* **Инструмент сборки:** Maven
+* **Веб:** Spring Web (для REST API)
+* **Доступ к данным:** Spring Data JPA
+* **База данных:** MySQL
+* **Безопасность:** Spring Security с JSON Web Tokens (JWT)
 
-The backend follows a traditional three-tier architecture:
+Бэкенд следует традиционной трёхуровневой архитектуре:
 
-*   **Controller Layer:** Handles incoming HTTP requests and calls the service layer.
-*   **Service Layer:** Contains the business logic of the application.
-*   **Data Access Layer:** Interacts with the database using Spring Data JPA.
+* **Уровень контроллера:** Обрабатывает входящие HTTP-запросы и вызывает сервисный уровень.
+* **Уровень сервиса:** Содержит бизнес-логику приложения.
+* **Уровень доступа к данным:** Взаимодействует с базой данных через Spring Data JPA.
 
-## Interaction
+## Взаимодействие
 
-The frontend and backend communicate via a RESTful API. The frontend sends HTTP requests to the backend, which processes the requests and returns JSON responses. Authentication is handled using JWT. The frontend stores the JWT in local storage and sends it in the `Authorization` header of each request.
+Фронтенд и бэкенд взаимодействуют через RESTful API. Фронтенд отправляет HTTP-запросы бэкенду, который обрабатывает их и возвращает JSON-ответы. Аутентификация осуществляется с помощью JWT. Фронтенд сохраняет JWT в локальном хранилище и отправляет его в заголовке `Authorization` каждого запроса.
